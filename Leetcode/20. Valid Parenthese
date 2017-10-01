@@ -1,0 +1,37 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        stck = []
+        paran = list(s)
+        flag = 1
+        for p in paran:
+            if p == '(' or p == '{' or p == '[':
+                stck.append(p)
+            else:
+                if len(stck) != 0:
+                    op = stck.pop()
+                    if p == ')':
+                        if op == '{' or op == '[':
+                            flag = 0
+                            break
+                    if p == '}':
+                        if op == '(' or op == '[':
+                            flag = 0
+                            break
+                    if p == ']':
+                        if op == '(' or op == '{':
+                            flag = 0
+                            break
+                else:
+                    flag = 0
+        if len(stck) != 0:
+            flag = 0
+        if flag == 1:
+            return True
+        elif flag == 0:
+            return False
+                            
+                        
