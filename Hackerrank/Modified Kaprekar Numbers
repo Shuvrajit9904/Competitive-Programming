@@ -1,0 +1,39 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from __future__ import print_function
+import math
+p = int(raw_input())
+q = int(raw_input())
+
+kap = []
+for nums in range(p,q+1):
+    sqr = nums * nums
+    numlst = list(str(sqr))
+    odd = len(numlst)%2
+    #print "odd:",odd
+    l = 0
+    r = 0
+    for i in range(len(numlst)):
+        left = "".join(numlst[:i])        
+        right = "".join(numlst[i:]) 
+        left1 = left.split()
+        right1 = right.split()        
+        if len(left1) > 0:
+            l = int(left1[0])
+        if len(right1) > 0:
+            r = int(right1[0])               
+        if (l + r) == nums:
+            if odd == 1:
+                #print len(numlst[:i])
+                #print len(numlst[i:])
+                if r != 0 and len(numlst[i:]) == len(numlst[:i]) + 1:
+                    kap.append(nums)
+            else:
+                if r != 0 and len(numlst[i:]) == len(numlst[:i]):
+                    kap.append(nums)
+kaprekar = list(set(kap))
+kaprekar.sort()
+if len(kaprekar) != 0:
+    print(*kaprekar, sep = ' ')
+else:
+    print("INVALID RANGE")
+
