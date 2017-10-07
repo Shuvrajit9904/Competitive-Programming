@@ -1,0 +1,45 @@
+#!/bin/python
+
+from __future__ import print_function
+import sys
+import math
+
+
+s = raw_input().strip()
+S = list(s)
+lenS = len(S)
+l = math.sqrt(lenS)
+lrow = int(math.floor(l))
+lcol = int(math.ceil(l))
+if lrow * lcol < lenS:
+    lrow = lrow + 1
+r = 0
+c = 0
+new = [[] for j in range(lrow)]
+i = 0
+while (r < lrow):
+    while(c < lcol):        
+        if r*lcol + c < lenS:
+            new[r].append(S[r*(lcol) + c])
+        else:
+            new[r].append('')
+        #print new
+        c += 1                    
+    r += 1
+    c = 0    
+
+#print new    
+newT = [[new[j][i] for j in range(lrow)] for i in range(lcol)]
+
+res = []
+for line in newT:
+    res.append("".join(line))
+if 
+print(*res, sep = ' ')    
+    
+        
+    
+    
+    
+    
+    
